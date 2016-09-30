@@ -1,0 +1,8 @@
+import_type=PLAIN
+import_name=$СХЕМА
+import_print=2d33fc0b8d8d31e7a3ed507c70fb07ea
+import_timeout=1
+plain_path=$ШЛЯХ
+plain_dir=$НАПРЯМОК
+plain_mask=*
+opt_log=1
