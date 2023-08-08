@@ -4,6 +4,8 @@
  */
 package ribbonstarter;
 
+import javax.swing.JDialog;
+
 /**
  *
  * @author s.nepochatov
@@ -35,9 +37,11 @@ public class StarterFrame extends javax.swing.JFrame {
             this.startBut.setEnabled(false);
             this.journalText.setText("");
             this.stopBut.setEnabled(true);
+            this.propertiesBut.setEnabled(false);
         } else {
             this.startBut.setEnabled(true);
             this.stopBut.setEnabled(false);
+            this.propertiesBut.setEnabled(true);
         }
     }
 
@@ -55,6 +59,7 @@ public class StarterFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         startBut = new javax.swing.JButton();
         stopBut = new javax.swing.JButton();
+        propertiesBut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Стратер серверу \"Стрічка\"");
@@ -83,6 +88,13 @@ public class StarterFrame extends javax.swing.JFrame {
             }
         });
 
+        propertiesBut.setText("Налаштування");
+        propertiesBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertiesButActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,6 +102,7 @@ public class StarterFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 837, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -97,8 +110,10 @@ public class StarterFrame extends javax.swing.JFrame {
                                 .addComponent(startBut)
                                 .addGap(18, 18, 18)
                                 .addComponent(stopBut)))
-                        .addGap(0, 558, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(propertiesBut)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -111,7 +126,8 @@ public class StarterFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startBut)
-                    .addComponent(stopBut))
+                    .addComponent(stopBut)
+                    .addComponent(propertiesBut))
                 .addContainerGap())
         );
 
@@ -127,6 +143,11 @@ public class StarterFrame extends javax.swing.JFrame {
         RibbonStarter.starterWorker.interrupt();
         RibbonStarter.starterWorker = null;
     }//GEN-LAST:event_stopButActionPerformed
+
+    private void propertiesButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_propertiesButActionPerformed
+        JDialog dialog = new PropertiesDialog(this, true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_propertiesButActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,6 +194,7 @@ public class StarterFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea journalText;
+    private javax.swing.JButton propertiesBut;
     private javax.swing.JButton startBut;
     private javax.swing.JButton stopBut;
     // End of variables declaration//GEN-END:variables
