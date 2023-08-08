@@ -22,6 +22,10 @@ package ribbonclient;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JList;
+import javax.swing.UIManager;
+import javax.swing.Icon;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultTreeCellRenderer;
 
 /**
  * Main window class.
@@ -65,6 +69,16 @@ public class mainFrame extends javax.swing.JFrame {
         dirTree.setRootVisible(false);
         messageList.setCellRenderer(new UrgentRenderer());
         refreshStatusBar();
+        
+        final Icon icon = UIManager.getIcon("Tree.closedIcon");
+        dirTree.setCellRenderer(new DefaultTreeCellRenderer() {
+            @Override
+            public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
+                Component component = super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
+                setIcon(icon);
+                return component;
+            }
+        });
     }
     
     /**
@@ -131,11 +145,9 @@ public class mainFrame extends javax.swing.JFrame {
         });
 
         jSplitPane1.setDividerLocation(140);
-        jSplitPane1.setDividerSize(5);
         jSplitPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jSplitPane2.setDividerLocation(150);
-        jSplitPane2.setDividerSize(5);
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         messageList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -166,6 +178,7 @@ public class mainFrame extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(jPanel1);
 
         dirTree.setModel(DirClasses.DirEntryUI.rootDir);
+        dirTree.setCellRenderer(null);
         dirTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
             public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
                 dirTreeValueChanged(evt);
@@ -201,12 +214,12 @@ public class mainFrame extends javax.swing.JFrame {
         });
         fileMenu.add(reloginItem);
 
-        optionsItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        optionsItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         optionsItem.setText("Налаштування");
         fileMenu.add(optionsItem);
         fileMenu.add(jSeparator1);
 
-        exitItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+        exitItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         exitItem.setText("Вийти");
         exitItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +232,7 @@ public class mainFrame extends javax.swing.JFrame {
 
         messageMenu.setText("Повідомлення");
 
-        addItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        addItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         addItem.setText("Додати");
         addItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,7 +241,7 @@ public class mainFrame extends javax.swing.JFrame {
         });
         messageMenu.add(addItem);
 
-        editItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        editItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         editItem.setText("Редагувати");
         editItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +250,7 @@ public class mainFrame extends javax.swing.JFrame {
         });
         messageMenu.add(editItem);
 
-        repostItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        repostItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         repostItem.setText("Перевипустити");
         repostItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +259,7 @@ public class mainFrame extends javax.swing.JFrame {
         });
         messageMenu.add(repostItem);
 
-        removeBut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        removeBut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         removeBut.setText("Видалити");
         removeBut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,7 +281,7 @@ public class mainFrame extends javax.swing.JFrame {
 
         helpMenu.setText("Довідка");
 
-        aboutItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        aboutItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         aboutItem.setText("Про програму");
         aboutItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

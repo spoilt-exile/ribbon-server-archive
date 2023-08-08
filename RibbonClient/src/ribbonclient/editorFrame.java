@@ -97,25 +97,25 @@ public class editorFrame extends javax.swing.JDialog {
 
         editorBar.setBorder(null);
 
-        copyBut.setText("Копировать");
+        copyBut.setText("Копіювати");
         copyBut.setFocusable(false);
         copyBut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         copyBut.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         editorBar.add(copyBut);
 
-        pasteBut.setText("Вставить");
+        pasteBut.setText("Вставити");
         pasteBut.setFocusable(false);
         pasteBut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         pasteBut.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         editorBar.add(pasteBut);
 
-        flushBut.setText("Очистить");
+        flushBut.setText("Відчистити");
         flushBut.setFocusable(false);
         flushBut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         flushBut.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         editorBar.add(flushBut);
 
-        releaseBut.setText("Выпуск!");
+        releaseBut.setText("Випуск!");
         releaseBut.setFocusable(false);
         releaseBut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         releaseBut.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
